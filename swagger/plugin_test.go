@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/favclip/ucon"
+	"github.com/kikuttys/ucon"
 )
 
 type ReqSwaggerParameter struct {

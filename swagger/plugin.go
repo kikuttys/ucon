@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/favclip/ucon"
+	"github.com/kikuttys/ucon"
 )
 
 // interface compatibility check

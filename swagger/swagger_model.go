@@ -5,7 +5,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/favclip/ucon"
+	"github.com/kikuttys/ucon"
 )
 
 // TagSwagger is a struct tag for setting attributes of swagger.

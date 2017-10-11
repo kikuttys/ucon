@@ -144,7 +144,7 @@ func RequestObjectMapper() MiddlewareFunc {
 				return ErrInvalidPathParameterType
 			}
 			for key, value := range params {
-				found, _ := valueStringMapper(reqV, key, value)
+				found, _ := ValueStringMapper(reqV, key, value)
 				if !found {
 					return ErrPathParameterFieldMissing
 				}
@@ -153,7 +153,7 @@ func RequestObjectMapper() MiddlewareFunc {
 
 		// url get parameter
 		for key, ss := range b.R.URL.Query() {
-			_, err := valueStringSliceMapper(reqV, key, ss)
+			_, err := ValueStringSliceMapper(reqV, key, ss)
 			if err != nil {
 				return err
 			}

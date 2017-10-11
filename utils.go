@@ -54,7 +54,8 @@ func structFieldToKey(sf reflect.StructField) string {
 	return sf.Name
 }
 
-func valueStringMapper(target reflect.Value, key string, value string) (bool, error) {
+// ValueStringMapper returns whether mapping is success.
+func ValueStringMapper(target reflect.Value, key string, value string) (bool, error) {
 	if target.Kind() == reflect.Ptr {
 		target = target.Elem()
 	}
@@ -68,7 +69,7 @@ func valueStringMapper(target reflect.Value, key string, value string) (bool, er
 		f := target.Field(i)
 
 		if sf.Anonymous {
-			ret, err := valueStringMapper(f, key, value)
+			ret, err := ValueStringMapper(f, key, value)
 			if err != nil {
 				return false, err
 			}
@@ -102,7 +103,8 @@ func valueStringMapper(target reflect.Value, key string, value string) (bool, er
 	return false, nil
 }
 
-func valueStringSliceMapper(target reflect.Value, key string, values []string) (bool, error) {
+// ValueStringSliceMapper returns whether mapping is success.
+func ValueStringSliceMapper(target reflect.Value, key string, values []string) (bool, error) {
 	if target.Kind() == reflect.Ptr {
 		target = target.Elem()
 	}
@@ -116,7 +118,7 @@ func valueStringSliceMapper(target reflect.Value, key string, values []string) (
 		f := target.Field(i)
 
 		if sf.Anonymous {
-			ret, err := valueStringSliceMapper(f, key, values)
+			ret, err := ValueStringSliceMapper(f, key, values)
 			if err != nil {
 				return false, err
 			}
@@ -135,7 +137,7 @@ func valueStringSliceMapper(target reflect.Value, key string, values []string) (
 			if len(values) == 0 {
 				continue
 			}
-			ret, err := valueStringMapper(target, key, values[0])
+			ret, err := ValueStringMapper(target, key, values[0])
 			if err != nil {
 				return false, err
 			}
